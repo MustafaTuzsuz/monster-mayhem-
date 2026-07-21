@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    background: #1a1a2e;
+}
+
+polygon {
+    fill: #2a2a4a;
+    stroke: #5a5a8a;
+    stroke-width: 1.5;
+}
