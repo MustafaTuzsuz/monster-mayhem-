@@ -17,8 +17,6 @@ including attempts that did not resolve the issue.
 
 ## References
 
-Patel, A. (2013) *Hexagonal Grids*. Red Blob Games. Available at: https://www.redblobgames.com/grids/hexagons/ (Accessed: 21 July 2026).
+Patel, A. (2013) *Hexagonal Grids*. Red Blob Games. Available at:
+https://www.redblobgames.com/grids/hexagons/ (Accessed: 21 July 2026).
 
-Patel, A. (2013) *Hexagonal Grids: Coordinate Systems*. Red Blob Games. Available at: https://www.redblobgames.com/grids/hexagons/#coordinates-offset (Accessed: 21 July 2026).
-
-Patel, A. (2013) *Hexagonal Grids: Conversion between axial and offset*. Red Blob Games. Available at: https://www.redblobgames.com/grids/hexagons/#conversions-offset (Accessed: 21 July 2026).
