@@ -19,6 +19,12 @@ polygon.selected {
     stroke-width: 3;
 }
 
+polygon.in-range {
+    fill: #3a3a6a;
+    stroke: #8080cc;
+    stroke-width: 1.5;
+}
+
 circle.p1 {
     fill: #00e676;
 }

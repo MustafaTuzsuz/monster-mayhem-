@@ -16,6 +16,9 @@ function hexStateClass(row, col) {
     if (hoveredHex !== null && hoveredHex.row === row && hoveredHex.col === col) {
         return "hover";
     }
+    if (reachable[row + "," + col] !== undefined) {
+        return "in-range";
+    }
     return "";
 }
 
@@ -76,8 +79,18 @@ function buildBoard() {
                 // Clicking the already-selected hex deselects it
                 if (selectedHex !== null && selectedHex.row === r && selectedHex.col === c) {
                     selectedHex = null;
+                    reachable = {};
                 } else {
-                    selectedHex = { row: r, col: c };
+                    var clicked = monsterAt(r, c);
+                    // Only select if this hex holds a friendly monster
+                    if (clicked !== null && clicked.player === currentPlayer) {
+                        selectedHex = { row: r, col: c };
+                        computeRange(r, c);
+                    } else {
+                        // Clicking anything else clears the selection
+                        selectedHex = null;
+                        reachable = {};
+                    }
                 }
                 refresh();
             });
