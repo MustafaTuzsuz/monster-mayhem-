@@ -19,6 +19,19 @@ polygon.selected {
     stroke-width: 3;
 }
 
+#status {
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    margin: 8px 12px;
+}
+
+polygon.path {
+    fill: #7b4ccc;
+    stroke: #c090ff;
+    stroke-width: 2;
+}
+
 polygon.in-range {
     fill: #3a3a6a;
     stroke: #8080cc;
