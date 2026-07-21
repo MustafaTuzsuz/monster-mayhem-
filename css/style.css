@@ -8,3 +8,7 @@ polygon {
     stroke: #5a5a8a;
     stroke-width: 1.5;
 }
+
+polygon.hover {
+    fill: #e0a020;
+}

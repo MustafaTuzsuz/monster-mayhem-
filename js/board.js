@@ -1,6 +1,31 @@
 var ROWS = 10;
 var COLS = 10;
 
+// Tracks which hex the mouse is currently over; null when outside the grid
+var hoveredHex = null;
+
+// Returns the single CSS class that should be applied to this hex.
+// Priority order (highest first): selected > path > hover > in-range > default.
+// Later steps will prepend new conditions above the hover check.
+function hexStateClass(row, col) {
+    if (hoveredHex !== null && hoveredHex.row === row && hoveredHex.col === col) {
+        return "hover";
+    }
+    return "";
+}
+
+// Overwrites the class attribute of every polygon using hexStateClass.
+// Never uses classList.add -- one source of truth per hex.
+function refresh() {
+    var polygons = document.getElementById("board").getElementsByTagName("polygon");
+    for (var i = 0; i < polygons.length; i++) {
+        var poly = polygons[i];
+        var r = parseInt(poly.getAttribute("data-row"), 10);
+        var c = parseInt(poly.getAttribute("data-col"), 10);
+        poly.setAttribute("class", hexStateClass(r, c));
+    }
+}
+
 function buildBoard() {
     var svg = document.getElementById("board");
 
@@ -23,6 +48,22 @@ function buildBoard() {
             polygon.setAttribute("points",   hexCorners(centre.x, centre.y));
             polygon.setAttribute("data-row", row);
             polygon.setAttribute("data-col", col);
+
+            // Identity is read from the frozen data attributes on the event target,
+	    // so the listener never closes over the loop variables at all.
+            // which are already frozen on the element at creation time.
+            polygon.addEventListener("mouseenter", function(e) {
+                hoveredHex = {
+                    row: parseInt(e.target.getAttribute("data-row"), 10),
+                    col: parseInt(e.target.getAttribute("data-col"), 10)
+                };
+                refresh();
+            });
+
+            polygon.addEventListener("mouseleave", function() {
+                hoveredHex = null;
+                refresh();
+            });
 
             svg.appendChild(polygon);
         }
