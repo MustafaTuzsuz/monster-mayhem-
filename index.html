@@ -8,6 +8,15 @@
 <body>
     <p id="instructions">Click your monster (green = P1, red = P2) to select it. Highlighted hexes are in range (up to 3 steps). Hover to preview the path, click to move. Click the selected monster again to deselect.</p>
     <p id="status"></p>
+
+    <div id="overlay" class="hidden">
+        <div id="overlay-box">
+            <h2>Game Over</h2>
+            <p id="overlay-result"></p>
+            <button id="restart-btn">Play Again</button>
+        </div>
+    </div>
+
     <svg id="board"></svg>
 
     <script src="js/hex.js"></script>

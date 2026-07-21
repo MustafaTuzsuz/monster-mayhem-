@@ -4,6 +4,7 @@ var monsters = [];
 var currentPlayer = 1;
 var MOVE_RANGE = 3;
 var gameOver = false;
+var moveCount = 0;
 
 // Lookup keyed by "row,col" -> step cost; populated by computeRange
 var reachable = {};
@@ -129,6 +130,8 @@ function moveMonster(monster, row, col) {
     monster.row = row;
     monster.col = col;
 
+    moveCount++;
+
     // Pass the turn
     currentPlayer = (currentPlayer === 1) ? 2 : 1;
 
@@ -152,6 +155,18 @@ function checkWin() {
     if (!p2alive) { return 1; }
     if (!p1alive) { return 2; }
     return null;
+}
+
+// Resets all game state and re-places monsters for a new game.
+function resetGame() {
+    monsters = [];
+    currentPlayer = 1;
+    gameOver = false;
+    moveCount = 0;
+    selectedHex = null;
+    reachable = {};
+    parent = {};
+    setupMonsters();
 }
 
 // Initialise before the board is built

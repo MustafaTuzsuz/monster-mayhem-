@@ -43,6 +43,13 @@ function refresh() {
     }
 }
 
+// Fills and shows the game-over overlay with winner and move count.
+function showGameOver(winner) {
+    document.getElementById("overlay-result").textContent =
+        "Player " + winner + " wins in " + moveCount + " moves!";
+    document.getElementById("overlay").classList.remove("hidden");
+}
+
 // Updates the status text below the board
 function updateStatus(winner) {
     var el = document.getElementById("status");
@@ -91,6 +98,7 @@ function buildBoard() {
             // Identity is read from the frozen data attributes on the event target,
             // so the listener never closes over the loop variables at all.
             polygon.addEventListener("mouseenter", function (e) {
+                if (gameOver) { return; }
                 var r = parseInt(e.target.getAttribute("data-row"), 10);
                 var c = parseInt(e.target.getAttribute("data-col"), 10);
                 hoveredHex = { row: r, col: c };
@@ -130,7 +138,9 @@ function buildBoard() {
                     currentPath = [];
                     var winner = checkWin();
                     rebuildBoard();
-                    updateStatus(winner);
+                    if (winner !== null) {
+                        showGameOver(winner);
+                    }
                     return;
                 }
 
@@ -171,4 +181,10 @@ function buildBoard() {
 window.addEventListener("load", function () {
     buildBoard();
     updateStatus(null);
+
+    document.getElementById("restart-btn").addEventListener("click", function () {
+        document.getElementById("overlay").classList.add("hidden");
+        resetGame();
+        rebuildBoard();
+    });
 });
