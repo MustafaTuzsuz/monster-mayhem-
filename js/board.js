@@ -4,10 +4,15 @@ var COLS = 10;
 // Tracks which hex the mouse is currently over; null when outside the grid
 var hoveredHex = null;
 
+// Tracks which hex the player has clicked to select; null when nothing is selected
+var selectedHex = null;
+
 // Returns the single CSS class that should be applied to this hex.
 // Priority order (highest first): selected > path > hover > in-range > default.
-// Later steps will prepend new conditions above the hover check.
 function hexStateClass(row, col) {
+    if (selectedHex !== null && selectedHex.row === row && selectedHex.col === col) {
+        return "selected";
+    }
     if (hoveredHex !== null && hoveredHex.row === row && hoveredHex.col === col) {
         return "hover";
     }
@@ -62,6 +67,18 @@ function buildBoard() {
 
             polygon.addEventListener("mouseleave", function() {
                 hoveredHex = null;
+                refresh();
+            });
+
+            polygon.addEventListener("click", function(e) {
+                var r = parseInt(e.target.getAttribute("data-row"), 10);
+                var c = parseInt(e.target.getAttribute("data-col"), 10);
+                // Clicking the already-selected hex deselects it
+                if (selectedHex !== null && selectedHex.row === r && selectedHex.col === c) {
+                    selectedHex = null;
+                } else {
+                    selectedHex = { row: r, col: c };
+                }
                 refresh();
             });
 

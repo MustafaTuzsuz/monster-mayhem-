@@ -12,3 +12,9 @@ polygon {
 polygon.hover {
     fill: #e0a020;
 }
+
+polygon.selected {
+    fill: #00c8ff;
+    stroke: #ffffff;
+    stroke-width: 3;
+}
