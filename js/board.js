@@ -58,6 +58,9 @@ function rebuildBoard() {
     var svg = document.getElementById("board");
     // Remove everything so circles reflect the new monster positions
     while (svg.firstChild) { svg.removeChild(svg.firstChild); }
+    // Old polygon elements are gone so mouseleave never fires; reset manually
+    hoveredHex = null;
+    currentPath = [];
     buildBoard();
     updateStatus(checkWin());
 }
@@ -107,6 +110,7 @@ function buildBoard() {
             });
 
             polygon.addEventListener("click", function (e) {
+                if (gameOver) { return; }
                 var r = parseInt(e.target.getAttribute("data-row"), 10);
                 var c = parseInt(e.target.getAttribute("data-col"), 10);
 

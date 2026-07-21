@@ -3,6 +3,7 @@ var monsters = [];
 
 var currentPlayer = 1;
 var MOVE_RANGE = 3;
+var gameOver = false;
 
 // Lookup keyed by "row,col" -> step cost; populated by computeRange
 var reachable = {};
@@ -130,6 +131,9 @@ function moveMonster(monster, row, col) {
 
     // Pass the turn
     currentPlayer = (currentPlayer === 1) ? 2 : 1;
+
+    // Lock the board if the game is now over
+    if (checkWin() !== null) { gameOver = true; }
 
     // Clear selection state
     selectedHex = null;

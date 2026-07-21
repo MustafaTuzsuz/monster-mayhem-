@@ -14,3 +14,11 @@ set of project rules defined in CLAUDE.md. Every generated iteration is committe
 separately with the prompt recorded in the commit body. Manual modifications are
 committed separately. Troubleshooting steps are documented in the commit messages,
 including attempts that did not resolve the issue.
+
+## References
+
+Patel, A. (2013) *Hexagonal Grids*. Red Blob Games. Available at: https://www.redblobgames.com/grids/hexagons/ (Accessed: 21 July 2026).
+
+Patel, A. (2013) *Hexagonal Grids: Coordinate Systems*. Red Blob Games. Available at: https://www.redblobgames.com/grids/hexagons/#coordinates-offset (Accessed: 21 July 2026).
+
+Patel, A. (2013) *Hexagonal Grids: Conversion between axial and offset*. Red Blob Games. Available at: https://www.redblobgames.com/grids/hexagons/#conversions-offset (Accessed: 21 July 2026).
