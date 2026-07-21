@@ -18,3 +18,11 @@ polygon.selected {
     stroke: #ffffff;
     stroke-width: 3;
 }
+
+circle.p1 {
+    fill: #00e676;
+}
+
+circle.p2 {
+    fill: #ff1744;
+}

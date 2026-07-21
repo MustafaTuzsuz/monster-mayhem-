@@ -83,6 +83,19 @@ function buildBoard() {
             });
 
             svg.appendChild(polygon);
+
+            // Draw a circle on top if a monster lives on this hex
+            var monster = monsterAt(row, col);
+            if (monster !== null) {
+                var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                circle.setAttribute("cx", centre.x);
+                circle.setAttribute("cy", centre.y);
+                circle.setAttribute("r",  HEX_SIZE * 0.35);
+                circle.setAttribute("class", "p" + monster.player);
+                // Circles must not intercept mouse events -- clicks and hover must reach the polygon below
+                circle.setAttribute("pointer-events", "none");
+                svg.appendChild(circle);
+            }
         }
     }
 }
