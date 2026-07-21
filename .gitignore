@@ -1,0 +1,10 @@
+.DS_Store
+*~
+*.swp
+.vscode/
+.idea/
+*.mp4
+*.mkv
+*.webm
+*.mov
+.commitmsg
