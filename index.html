@@ -9,8 +9,16 @@
     <p id="instructions">Click your monster (green = P1, red = P2) to select it. Highlighted hexes are in range (up to 3 steps). Hover to preview the path, click to move. Click the selected monster again to deselect.</p>
     <p id="status"></p>
 
-    <div id="overlay" class="hidden">
-        <div id="overlay-box">
+    <div id="start-overlay" class="overlay">
+        <div class="overlay-box">
+            <h2>Monster Mayhem</h2>
+            <p>Capture all 3 enemy monsters to win. Each monster moves up to 3 steps per turn.</p>
+            <button id="start-btn">Start Game</button>
+        </div>
+    </div>
+
+    <div id="gameover-overlay" class="overlay hidden">
+        <div class="overlay-box">
             <h2>Game Over</h2>
             <p id="overlay-result"></p>
             <button id="restart-btn">Play Again</button>

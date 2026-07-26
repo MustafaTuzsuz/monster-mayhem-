@@ -3,11 +3,8 @@ body {
     background: #1a1a2e;
 }
 
-#overlay.hidden {
-    display: none;
-}
-
-#overlay {
+/* Shared by both the start overlay and the game over overlay */
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -19,7 +16,12 @@ body {
     justify-content: center;
 }
 
-#overlay-box {
+/* .overlay.hidden beats .overlay because it is more specific (two classes) */
+.overlay.hidden {
+    display: none;
+}
+
+.overlay-box {
     background: #2a2a4a;
     border: 2px solid #5a5a8a;
     padding: 32px 48px;
@@ -28,18 +30,18 @@ body {
     color: #ffffff;
 }
 
-#overlay-box h2 {
+.overlay-box h2 {
     margin: 0 0 12px;
     font-size: 1.8rem;
 }
 
-#overlay-box p {
+.overlay-box p {
     margin: 0 0 20px;
     font-size: 1.1rem;
     color: #c0c0e0;
 }
 
-#restart-btn {
+.overlay-box button {
     background: #00c8ff;
     color: #1a1a2e;
     border: none;
@@ -49,7 +51,7 @@ body {
     font-weight: bold;
 }
 
-#restart-btn:hover {
+.overlay-box button:hover {
     background: #00a0cc;
 }
 

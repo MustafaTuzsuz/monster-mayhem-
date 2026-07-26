@@ -47,7 +47,7 @@ function refresh() {
 function showGameOver(winner) {
     document.getElementById("overlay-result").textContent =
         "Player " + winner + " wins in " + moveCount + " moves!";
-    document.getElementById("overlay").classList.remove("hidden");
+    document.getElementById("gameover-overlay").classList.remove("hidden");
 }
 
 // Updates the status text below the board
@@ -182,8 +182,12 @@ window.addEventListener("load", function () {
     buildBoard();
     updateStatus(null);
 
+    document.getElementById("start-btn").addEventListener("click", function () {
+        document.getElementById("start-overlay").classList.add("hidden");
+    });
+
     document.getElementById("restart-btn").addEventListener("click", function () {
-        document.getElementById("overlay").classList.add("hidden");
+        document.getElementById("gameover-overlay").classList.add("hidden");
         resetGame();
         rebuildBoard();
     });
